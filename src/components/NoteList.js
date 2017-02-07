@@ -1,17 +1,18 @@
 import React from 'react'
 
-export default class NoteList extends React.Component {
+import { connect } from 'react-redux'
 
-  componentDidMount(){
-    this.props.store.subscribe( this.forceUpdate.bind(this) )
-  }
+class NoteList extends React.Component {
+
+  // componentDidMount(){
+  //   this.props.store.subscribe( this.forceUpdate.bind(this) )
+  // }
 
   render (){
-    const store = this.props.store
-    console.log(store)
-
-    const notes = store.getState()
-
+    // const store = this.props.store
+    // console.log(store.getState())
+    // const notes = store.getState().notes
+    const notes = this.props.notes
     return (
       <div>
         <h2>Note List</h2>
@@ -20,5 +21,33 @@ export default class NoteList extends React.Component {
         </ul>
       </div>)
   }
-
 }
+
+function mapStateToProps (state){
+  return {
+    notes: state.notes
+  }
+}
+
+const wrappedComponentCreator = connect( mapStateToProps )
+export default wrappedComponentCreator( NoteList ) // returns a component
+
+// 
+// function connect(mapStateToProps){
+//   return function( component ){
+//     return class WrappedComponent extends React.Component {
+//
+//       // componentDidMount(){
+//       //   store.subscribe( this.forceUpdate.bind(this) )
+//       // }
+//
+//       render(){
+//         let state = store.getState()
+//         let props = mapStateToProps(state)
+//         React.createElement(component, props)
+//       }
+//     }
+//
+//
+//   }
+// }

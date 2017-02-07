@@ -8,8 +8,8 @@ export default class App extends Component {
     return(
       <div className='container'>
         App
-        < NoteList store={ this.props.store }/>
-        < NoteCreate store={ this.props.store }/>
+        < NoteList />
+        < NoteCreate />
       </div>)
   }
 }

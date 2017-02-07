@@ -18,15 +18,12 @@ class NoteCreate extends React.Component {
 
   handleSubmit(event){
     event.preventDefault()
-    console.log('Form submitted!')
     let action = addNote(this.state.note)
-    this.props.store.dispatch( action )
+    this.context.store.dispatch( action )
     this.setState({note: ''})
   }
 
   render(){
-    console.log(this.state)
-
     return (
       <div>
         <h3>Add a Note</h3>
