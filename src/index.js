@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import App from './components/App'
 
 import { createStore } from 'redux';
-import rootReducer from './reducers'
+import notesReducer from './reducers/notesReducer'
 
-const store = createStore(rootReducer);
+const store = createStore(notesReducer);
 
 
 
