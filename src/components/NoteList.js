@@ -2,18 +2,13 @@ import React, { Component } from 'react'
 
 export default class NoteList extends Component {
 
-  constructor(props){
-    super(props)
-    this.unsubscribe = props.store.subscribe(this.forceUpdate.bind(this))
-  }
-
-  componentWillUnmount(){
-    this.unsubscribe()
+  componentDidMount(){
+    this.props.store.subscribe(this.forceUpdate.bind(this))
   }
 
   handleNoteClick(e){
     e.preventDefault()
-    
+
     this.props.store.dispatch({
       type: 'UPDATE_CURRENT_NOTE',
       payload: e.target.text
